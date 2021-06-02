@@ -20,7 +20,7 @@ class MainController extends Controller
         Aspirant::create($data);
 
         return response()->json([
-            'message' => 'success'
+            'message' => 200
         ]);
     }   
 }

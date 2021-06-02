@@ -9,6 +9,13 @@
         <div class="carousel-item active">
             <div class="carousel-container">
                 <!-- <p class="animate__animated animate__fadeInDown">Welcome to</p> -->
+                <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center">
+                        <img src="/assets/img/logo.jpg" width="150px">
+                    </div>
+                </div>
+            </div>
                 <h2 class="animate__animated fanimate__adeInUp">People's Empowerment Party</h2>
                 <p class="animate__animated animate__fadeInDown">Wira ni Wira</p>
                 <!-- <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a> -->
@@ -51,13 +58,13 @@
             <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
         </defs>
         <g class="wave1">
-            <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+            <use xlink:href="#wave-path" x="50" y="3" fill="rgba(63, 185, 234, 1)">
         </g>
         <g class="wave2">
-            <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+            <use xlink:href="#wave-path" x="50" y="0" fill="rgba(241, 92, 68, 1)">
         </g>
         <g class="wave3">
-            <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+            <use xlink:href="#wave-path" x="50" y="9" fill="#a0cc39">
         </g>
     </svg>
 
@@ -114,32 +121,32 @@
     <!-- ======= Features Section ======= -->
     <section id="features" class="features">
         <div class="container">
-            <!-- <ul class="nav nav-tabs row d-flex">
+            <ul class="nav nav-tabs row d-flex">
                 <li class="nav-item col-3" data-aos="zoom-in">
                     <a class="nav-link active show" data-toggle="tab" href="#tab-1">
                         <i class="ri-gps-line"></i>
-                        <h4 class="d-none d-lg-block">Modi sit est dela pireda nest</h4>
+                        <h4 class="d-none d-lg-block">Peace</h4>
                     </a>
                 </li>
                 <li class="nav-item col-3" data-aos="zoom-in" data-aos-delay="100">
                     <a class="nav-link" data-toggle="tab" href="#tab-2">
                         <i class="ri-body-scan-line"></i>
-                        <h4 class="d-none d-lg-block">Unde praesenti mara setra le</h4>
+                        <h4 class="d-none d-lg-block">Development</h4>
                     </a>
                 </li>
                 <li class="nav-item col-3" data-aos="zoom-in" data-aos-delay="200">
                     <a class="nav-link" data-toggle="tab" href="#tab-3">
                         <i class="ri-sun-line"></i>
-                        <h4 class="d-none d-lg-block">Pariatur explica nitro dela</h4>
+                        <h4 class="d-none d-lg-block">Infrastructure</h4>
                     </a>
                 </li>
                 <li class="nav-item col-3" data-aos="zoom-in" data-aos-delay="300">
                     <a class="nav-link" data-toggle="tab" href="#tab-4">
                         <i class="ri-store-line"></i>
-                        <h4 class="d-none d-lg-block">Nostrum qui dile node</h4>
+                        <h4 class="d-none d-lg-block">Education</h4>
                     </a>
                 </li>
-            </ul> -->
+            </ul>
 
             <br>
             <br>
@@ -153,7 +160,7 @@
                         </div>
                         <div class="col-lg-6 order-1 order-lg-2 text-center">
 
-                            <h3>Hon Moses Kuria, <br>
+                            <h3 class="adjust">Hon Moses Kuria, <br>
                                 MP Gatundu South Constituency
                             </h3>
 
@@ -176,14 +183,12 @@
 
             <div class="active show" id="tab-1">
                 <div class="row">
-                    <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                        <h3>George Koimburi of the People's Empowerment Party</h3>
+                    <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 adjust">
+                        <h3>Recently elected MP, Juja Constituency</h3>
                         <p class="font-italic">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore
-                            magna aliqua.
-                        </p>
-                        <ul>
+                            Hon George Koimburi, MP Juja Constituency
+                        </p> 
+                        <!-- <ul>
                             <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo
                                 consequat.</li>
                             <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in
@@ -191,26 +196,25 @@
                             <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo
                                 consequat. Duis aute irure dolor in reprehenderit in voluptate trideta
                                 storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-                        </ul>
+                        </ul> -->
                     </div>
                     <div class="col-lg-6 order-1 order-lg-2 text-center">
                         <img src="assets/img/kiomburi.jpg" alt="" class="img-fluid">
-                        <p class="font-italic">
-                            Hon George Koimburi, MP Juja Constituency
-                        </p>
+                        
                     </div>
                 </div>
             </div>
             <br>
             <br>
+            <br>
             <div id="tab-2">
                 <div class="row">
-                    <div class="col-lg-6 order-1 order-lg-2 text-center">
-                        <h3>Neque exercitationem debitis soluta quos debitis quo mollitia officia est</h3>
+                    <div class="col-lg-6 order-1 order-lg-2 text-center" style="position: relative;top: 100px;">
+                        <h3>Recently elected MCA, Gaturi Ward</h3>
                         
                         <p class="font-italic">
-                           What I like about Kenyan's is not about the power of the party,
-                           it is the love of your leaders
+                           "What I like about Kenyan's is that you've shown that it's not about the power of the party,
+                           it is the love of your leaders"
                         </p>
 
                     </div>
@@ -272,7 +276,7 @@
                     <!-- <p>Join People's Empowerment Party</p> -->
                 </div>
                 <div class="col-lg-3 cta-btn-container text-center">
-                    <a class="cta-btn align-middle" href="#">Register As An Aspirant</a>
+                    <a class="cta-btn align-middle" href="{{url('aspirant_registrations')}}">Register As An Aspirant</a>
                 </div>
             </div>
 
@@ -843,19 +847,19 @@
                         <div class="address">
                             <i class="icofont-google-map"></i>
                             <h4>Location:</h4>
-                            <p>A108 Adam Street, New York, NY 535022</p>
+                            <p>Kileleshwa</p>
                         </div>
 
                         <div class="email">
                             <i class="icofont-envelope"></i>
                             <h4>Email:</h4>
-                            <p>info@example.com</p>
+                            <p>info@pep.co.ke</p>
                         </div>
 
                         <div class="phone">
                             <i class="icofont-phone"></i>
                             <h4>Call:</h4>
-                            <p>+1 5589 55488 55s</p>
+                            <p>+254 722 750 266</p>
                         </div>
 
                     </div>

@@ -5,9 +5,14 @@
      <!-- ======= Contact Section ======= -->
      <section id="contact" class="contact" style="position:relative;top:100px;margin-bottom:100px;">
         <div class="container">
-            
-
-            <div class="section-title" data-aos="zoom-out">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center">
+                        <img src="/assets/img/logo.jpg" width="200px">
+                    </div>
+                </div>
+            </div>
+            <div class="section-title" data-aos="zoom-out" style="text-align:center !important;">
                 <h2>Aspirants Registration</h2>
                 <p>PEOPLE'S EMPOWERMENT PARTY</p>
             </div>
@@ -64,6 +69,7 @@
                             <div class="col-md-4 form-group">
                                 <label class="form-group">Gender</label>
                                 <select class="form-control" name="gender" data-rule="required" data-msg="Please Select Your Gender">
+                                    <option disabled selected="true">Select Gender</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
 
@@ -73,6 +79,7 @@
                             <div class="col-md-4 form-group">
                                 <label class="form-group">Position Vying For</label>
                                     <select class="form-control" name="position">
+                                        <option disabled selected="true">Select Position</option>
                                         <option value="President">President</option>
                                         <option value="Governor">Governor</option>
                                         <option value="Senator">Senator</option>
@@ -86,6 +93,7 @@
                             <div class="col-md-4 form-group">
                                 <label class="form-group">Special Interest</label>
                                 <select class="form-control" name="special_interest">
+                                <option disabled selected="true">Select Special Interest</option>
                                 <option value="Ethnic Minority">Ethnic Minority</option>
                                 <option value="Marginalized Communities">Marginalized Communities</option>
                                 <option value="PWDs">PWDs</option>
@@ -100,7 +108,8 @@
                         <div class="row">
                             <div class="col-md-4 form-group">
                                 <label class="form-group">County</label>
-                                <select class="form-control" name="county" data-rule="required">
+                                <select class="form-control" name="county" data-rule="required" id="county" onchange="setConstituency()">
+                                <option disabled selected="true">Select County</option>
                                 <option value="BARINGO">BARINGO</option>
 								<option value="BOMET">BOMET</option>
 								<option value="BUNGOMA">BUNGOMA</option>
@@ -155,23 +164,25 @@
                             </div>
                             <div class="col-md-4 form-group">
                                 <label class="form-group">Constituency</label>
-                                <input type="text" name="constituency" class="form-control" id="name" placeholder="Enter Your Constituency"
-                                    data-rule="required" data-msg="Please Enter A Constituency"/>
+                                <select id="constituency"  class="form-control" name="county" data-rule="required" onchange="setConstituency()">
+
+                                </select>
                                 <div class="validate"></div>
                             </div>
                             <div class="col-md-4 form-group">
                                 <label class="form-group">Ward</label>
-                                <input type="text" name="ward" class="form-control" id="name" placeholder="Enter Your Ward"
-                                    data-rule="required" data-msg="Please Enter Your Ward"/>
+                                <select id="ward"  class="form-control" name="county" data-rule="required" onchange="setWard()">
+
+                                </select>
                                 <div class="validate"></div>
                             </div>
                         </div>
                         <div class="mb-3">
                             <div class="loading">Loading</div>
                             <div class="error-message"></div>
-                            <div class="sent-message">Your message has been sent. Thank you!</div>
+                            <div class="sent-message">Your Details has been saved. Thank you!</div>
                         </div>
-                        <div class="text-center"><button type="submit">Send Message</button></div>
+                        <div class="text-center"><button type="submit">Submit</button></div>
                     </form>
 
                 </div>
