@@ -129,14 +129,15 @@
       url: action,
       data: data,
       timeout: 40000,
-      success: function(){
+      success: function(data){
         {
           this_form.find('.loading').slideUp();
           this_form.find('.sent-message').slideDown();
+          console.log(data);
           this_form.find("input:not(input[type=submit]), textarea").val('');
         }
       },
-      error: function(){
+      error: function(data){
         {
           console.log(data);
           var error_msg = "Form submission failed!<br>";

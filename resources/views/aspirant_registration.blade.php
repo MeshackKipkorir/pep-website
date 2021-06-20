@@ -164,14 +164,17 @@
                             </div>
                             <div class="col-md-4 form-group">
                                 <label class="form-group">Constituency</label>
-                                <select id="constituency"  class="form-control" name="county" data-rule="required" onchange="setConstituency()">
+                                <select id="constituency"  class="form-control" name="constituency" data-rule="required" onchange="setWard()">
 
                                 </select>
                                 <div class="validate"></div>
                             </div>
                             <div class="col-md-4 form-group">
                                 <label class="form-group">Ward</label>
-                                <select id="ward"  class="form-control" name="county" data-rule="required" onchange="setWard()">
+                                <input type="text" name="ward" class="form-control" id="ward-manual" placeholder="Enter Your Ward"
+                                     data-msg="Please Enter Your Ward"/>
+
+                                <select id="ward" class="form-control" name="ward">
 
                                 </select>
                                 <div class="validate"></div>

@@ -75,6 +75,7 @@
             </ul>
           </li> -->
           <li><a href="{{url('aspirant_registrations')}}">Aspirant Registration</a></li>
+          <li><a href="{{url('member_registration')}}">Member Registration</a></li>
           <li><a href="#contact">Contact</a></li>
 
         </ul>
