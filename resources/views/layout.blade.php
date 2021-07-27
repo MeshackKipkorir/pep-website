@@ -5,12 +5,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>People's Empowerment Party</title>
+  <title>Chama Cha Kazi</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/logo.jpg" rel="apple-touch-icon">
+  <link href="assets/img/cck-logo.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -44,7 +44,7 @@
     <div class="container d-flex align-items-center">
 
       <div class="logo mr-auto">
-        <h1 style="font-size:20px;" class="text-light"><a href="{{url('/')}}"><span style="color:#3fb9ea;">PEOPLE'S </span><span style="color:#f15c44;">EMPOWERMENT</span> <span style="color:#a3ca3f;">PARTY</span></a></h1>
+        <h1 style="font-size:20px;" class="text-light"><a href="{{url('/')}}"><span style="color:#ed1f24;">CHAMA</span><span style="color:#3851a3;"> CHA</span> <span style="color:#fff;">KAZI</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="{{asset('assets/img/logo.jpg')}}" alt="" class="img-fluid"></a> -->
       </div>
@@ -74,16 +74,30 @@
               <li><a href="#">Drop Down 5</a></li>
             </ul>
           </li> -->
-          <li><a href="{{url('aspirant_registrations')}}">Aspirant Registration</a></li>
+          <li><a href="{{url('aspirant_registrations')}}">Aspirant Training Registration</a></li>
           <li><a href="{{url('member_registration')}}">Member Registration</a></li>
           <li><a href="#contact">Contact</a></li>
+          @if (Route::has('register'))
+            <li class="nav-item">
+            <a class="dropdown-item" href="{{ route('logout') }}"
+                  onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                  {{ __('Logout') }}
+              </a>
+
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                  @csrf
+              </form>
+            </li>
+            @endif
+
 
         </ul>
       </nav><!-- .nav-menu -->
 
     </div>
   </header><!-- End Header -->
-  
+
 
 @yield('content')
 
@@ -91,8 +105,8 @@
 <!-- ======= Footer ======= -->
 <footer id="footer">
     <div class="container">
-      <h3><span style="color:#3fb9ea;">PEOPLE'S </span><span style="color:#f15c44;">EMPOWERMENT</span> <span style="color:#a3ca3f;">PARTY</span></h3>
-      <p>Wira ni Wira.</p>
+      <h3><span style="color:#ed1f24;">CHAMA</span><span style="color:#3851a3;">CHA</span> <span style="color:#fff;">KAZI</span></h3>
+      <p>Kazi Na Pesa.</p>
       <div class="social-links">
         <a href="https://twitter.com/ndovuparty?lang=en" class="twitter"><i class="bx bxl-twitter"></i></a>
         <a href="https://www.facebook.com/pages/category/Political-Party/Peoples-Empowerment-Party-100912945157423/" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -100,7 +114,7 @@
         <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
       </div>
       <div class="copyright">
-        &copy; Copyright <strong><span>PEP</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Kazi</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->

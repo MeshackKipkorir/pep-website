@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('content') 
+@section('content')
 <main id="main">
      <!-- ======= Contact Section ======= -->
      <section id="contact" class="contact" style="position:relative;top:100px;margin-bottom:100px;">
@@ -8,13 +8,13 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-center">
-                        <img src="/assets/img/logo.jpg" width="200px">
+                        <img src="/assets/img/cck-logo.png" width="200px">
                     </div>
                 </div>
             </div>
             <div class="section-title" data-aos="zoom-out" style="text-align:center !important;">
-                <h2>Aspirants Registration</h2>
-                <p>PEOPLE'S EMPOWERMENT PARTY</p>
+                <h2>Aspirants Training Registration</h2>
+                <p>CHAMA CHA KAZI</p>
             </div>
 
             <div class="row mt-5">
@@ -24,6 +24,32 @@
 
                     <form action="{{url('save_aspirant')}}" method="post" role="form" class="php-email-form">
                         @csrf
+                        <div class="row">
+                            <div class="col-md-4 form-group">
+                                <label class="form-group">Class (Mandatory)</label>
+                                <select class="form-control" name="class" data-rule="required" data-msg="Please select a class" >
+                                    <option disabled selected="true">Select Class</option>
+                                    <option value="class_one">Saturday 7th August: Samburu, Laikipia & Nyandarua- Nyahururu</option>
+                                    <option value="class_two">Monday 9th August: Nakuru & Baringo- Nakuru</option>
+                                    <option value="class_three">Thursday 12th August: Kericho, Bomet & Narok - Narok</option>
+                                    <option value="class_four">Saturday 14th August: Nyeri</option>
+                                    <option value="class_five">Monday 16th August: Kirinyaga-Sagana</option>
+                                    <option value="class_six">Tuesday 17th August: Muranga- Stanley's Haven</option>
+                                    <option value="class_seven">Wednesday 18th August: Kiambu- Ruaka</option>
+                                    <option value="class_eight">Thursday 2nd September : Kajiado & Nairobi</option>
+                                    <option value="class_nine">Friday 3rd September: Garrisa, Wajir, Mandera, Machakos, Makueni & Kitui- Machakos</option>
+                                    <option value="class_ten">Saturday 4th September: Meru, Tharaka Nithi, Embu, Isiolo, Marsabit- Meru</option>
+                                    <option value="class_eleven">Monday 6th September: Tana River, Lamu, Taita Taveta, Kilifi, Mombasa & Kwale- Mombasa</option>
+                                    <option value="class_twelve">Wednesday 8th September: Kisii & Nyamira- Kisii</option>
+                                    <option value="class_thirteen">Friday 10th September: Uasin Gishu, Nandi, Elegeyo Marakwet- Eldoret</option>
+                                    <option value="class_fourteen">Saturday 11th September: Trans Nzoia, West Pokot & Turkana- Kitale</option>
+                                    <option value="class_fifteen">Monday 13th September: Bungoma, Vihiga, Busia & Kakamega- Kakamega</option>
+                                    <option value="class_sixteen">Tuesday 14th September: Migori, Homa Bay, Kisumu & Siaya- Kisumu</option>
+                                </select>
+                                <div class="validate"></div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-md-4 form-group">
                                 <label class="form-group">Surname</label>
@@ -171,9 +197,6 @@
                             </div>
                             <div class="col-md-4 form-group">
                                 <label class="form-group">Ward</label>
-                                <input type="text" name="ward" class="form-control" id="ward-manual" placeholder="Enter Your Ward"
-                                     data-msg="Please Enter Your Ward"/>
-
                                 <select id="ward" class="form-control" name="ward">
 
                                 </select>

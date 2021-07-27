@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-center">
-                        <img src="/assets/img/logo.jpg" width="200px">
+                        <img src="/assets/img/cck-logo.png" width="200px">
                     </div>
                 </div>
             </div>

@@ -220,7 +220,7 @@ counties = {
   "MAKUENI":['MBOONI','KILOME','KAITI','MAKUENI','KIBWEZI EAST','KIBWEZI WEST'],
   "NYANDARUA":['KINANGOP','KIPIPIRI','OL KALOU','OL JOROK','NDARAGWA'],
   "NYERI":['TETU','KIENI', 'MATHIRA', 'OTHAYA', 'MUKURWEINI', 'NYERI TOWN'],
-  "KIRINYAGA":['MWEA','NDIA','KIRINYAGA CENTRAL'],
+  "KIRINYAGA":['MWEA','NDIA','KIRINYAGA CENTRAL','GICHUGU'],
   "MURANGA" :['KANGEMA', 'MATHIOYA', 'KIHARU', 'KIGUMO', 'MARAGWA', 'KANDARA', 'GATANGA'],
   "KIAMBU":['GATUNDU SOUTH','GATUNDU NORTH','JUJA','THIKA TOWN','RUIRU','GITHUNGURI','KIAMBU','KIAMBAA','KABETE','KIKUYU','LIMURU','LARI'],
   "TURKANA":['TURKANA NORTH', 'TURKANA WEST', 'TURKANA CENTRAL', 'LOIMA', 'TURKANA SOUTH', 'TURKANA EAST'],
@@ -369,6 +369,7 @@ var constituencies = {
     "GICHUGU": ["KABARE","BARAGWI","NJUKIINI","NGARIAMA","KARUMANDI"],
     "NDIA": ["MUKURE","KIINE","KARITI"],
     "KIRINYAGA CENTRAL": ["MUTIRA","KANYEKINI","KERUGOYA","INOI"],
+    "GICHUGU": ["KABARE","BARAGWI","NJUKIINI","NGARIAMA","KARUMANDI"],
     "KANGEMA": ["KANYENYA-INI","MUGURU","RWATHIA"],
     "MATHIOYA": ["GITUGI","KIRU","KAMACHARIA"],
     "KIHARU": ["WANGU","MUGOIRI","MBIRI","TOWNSHIP","MURARANDIA","GATURI"],
@@ -568,11 +569,11 @@ function setConstituency(){
 function setWard(){
   var constituency = document.getElementById('constituency').value;
   pickedConstituency(constituency);
-  
+
 }
 
 function pickedCounty(county){
-  
+
   setPickedConstituency(counties[county]);
 }
 
@@ -630,7 +631,6 @@ function fetchUser(){
       console.log(response);
     }
     });
-  alert(input)
 }
 
 function setDetails(data){

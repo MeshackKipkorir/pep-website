@@ -135,6 +135,8 @@
           this_form.find('.sent-message').slideDown();
           console.log(data);
           this_form.find("input:not(input[type=submit]), textarea").val('');
+          location.reload();
+
         }
       },
       error: function(data){
