@@ -52,7 +52,7 @@
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="{{url('/')}}">Home</a></li>
-          <li><a href="#about">About</a></li>
+          <li><a href="{{url('diaspora')}}">Diaspora Registration</a></li>
           <!-- <li><a href="#services">Services</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#pricing">Pricing</a></li>
@@ -140,6 +140,8 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/carousel.js"></script>
+  <script src="assets/js/mobilizer.js"></script>
 
 </body>
 

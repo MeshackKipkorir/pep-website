@@ -20,6 +20,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'polling_center',
+        'agent_type'
     ];
 
     /**

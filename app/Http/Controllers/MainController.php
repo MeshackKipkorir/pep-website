@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Diaspora;
+use App\Models\Feedback;
 use Illuminate\Http\Request;
 use App\Models\Aspirant;
 use App\Models\Members;
@@ -92,5 +94,44 @@ class MainController extends Controller
 
 
         return view('view_aspirants_per_class', $data);
+    }
+
+    public function diasporaRegistration(){
+
+        return view('diaspora_registration');
+    }
+
+    public function storeDiaspora(Request $request){
+
+        $data = $request->all();
+        Diaspora::create($data);
+
+        return response()->json([
+            'message' => 200
+        ]);
+    }
+
+    public function saveFeedback(Request $request){
+
+        $data = $request->all();
+        Feedback::create($data);
+
+        return response()->json([
+            'message' => 200
+        ]);
+    }
+
+    public function viewDiaspora(){
+
+        $countries = Diaspora::groupBy('country_of_residence')->get();
+
+        $diasporas = Diaspora::all();
+
+        $data = [
+          'countries' => $countries,
+          'diasporas' => $diasporas
+        ];
+
+        return view('view_diasporas', $data);
     }
 }

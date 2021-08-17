@@ -5955,10 +5955,11 @@ a.close.disabled {
 }
 
 .carousel-indicators {
-  position: absolute;
+  position: relative !important;
   right: 0;
   bottom: 0;
   left: 0;
+    top: 348px !important;
   z-index: 15;
   display: flex;
   justify-content: center;
@@ -10006,3 +10007,26 @@ h3 {
 td,th{
     white-space: nowrap !important;
 }
+
+
+/*officess carousel*/
+.blog .carousel-indicators {
+    left: 0;
+    top: auto;
+    bottom: -40px;
+
+}
+
+/* The colour of the indicators */
+.blog .carousel-indicators li {
+    background: #a3a3a3;
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+}
+
+.blog .carousel-indicators .active {
+    background: #707070;
+}
+/*end of office carousel*/
+

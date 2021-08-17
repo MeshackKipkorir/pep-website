@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('fetch_mobilizer/{polling_center}/{id}',[\App\Http\Controllers\AgentsController::class,'fetchMobilizer']);
+
