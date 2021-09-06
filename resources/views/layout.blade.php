@@ -101,6 +101,13 @@
 
 @yield('content')
 
+  <!-- loader and overlay -->
+  <div id="overlay">
+      <div class="cv-spinner">
+          <span class="spinner"></span>
+      </div>
+  </div>
+
 
 <!-- ======= Footer ======= -->
 <footer id="footer">

@@ -49,8 +49,14 @@ Route::get('agent_a_mobilizer_registration',[App\Http\Controllers\AgentsControll
 Route::get('agent_b_mobilizer_registration',[App\Http\Controllers\AgentsController::class,'addMobilizerB'])->middleware('auth');
 
 Route::get('agents_report',[App\Http\Controllers\AgentsController::class,'agentsReport']);
+Route::get('mobilizers_report',[App\Http\Controllers\AgentsController::class,'mobilizersReport']);
+Route::get('mobilizers_final_report',[App\Http\Controllers\AgentsController::class,'mobilizersFinalReport']);
+
+Route::get('super_mobilizers_registration',[App\Http\Controllers\AgentsController::class,'superMobilizers']);
+
 //save mobilizer
 Route::post('save_mobilizer',[\App\Http\Controllers\AgentsController::class,'saveMobilizer']);
+Route::post('save_super_mobilizer',[\App\Http\Controllers\AgentsController::class,'saveSuperMobilizer']);
 /**
  * Admin routes
  */
@@ -60,3 +66,6 @@ Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
     Route::get('/', [App\Http\Controllers\AdminController::class, 'index']);
     Route::get('/registered_members', [App\Http\Controllers\AdminController::class, 'viewRegisteredMembers']);
 });
+
+//materials manager
+Route::get('materials_manager',[App\Http\Controllers\AgentsController::class,'materialsManager']);
