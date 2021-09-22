@@ -11,4 +11,8 @@ class KiaguRegisteredVoters extends Model
 
     protected $table = 'kiagu_registered_voters';
 
+    public $timestamps = false;
+    protected  $fillable = ['id_no','phone_number'];
+
+
 }

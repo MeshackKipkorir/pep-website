@@ -8,6 +8,9 @@
   <title>Chama Cha Kazi</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
 
   <!-- Favicons -->
   <link href="assets/img/cck-logo.png" rel="apple-touch-icon">

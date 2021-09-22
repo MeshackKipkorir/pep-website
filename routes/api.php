@@ -20,5 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('fetch_mobilizer/{polling_center}/{id}',[\App\Http\Controllers\AgentsController::class,'fetchMobilizer']);
 Route::get('check_mobilizer/{polling_center}/{id}',[\App\Http\Controllers\AgentsController::class,'checkMobilizer']);
-Route::get('search_mobilizer/{id}',[\App\Http\Controllers\AgentsController::class,'searchMobilizer']);
+Route::get('search_mobilizer/{id}/{polling_station}',[\App\Http\Controllers\AgentsController::class,'searchMobilizer']);
+Route::get('check_phone_number/{phone_number}',[\App\Http\Controllers\AgentsController::class,'checkPhoneNumber']);
 

@@ -69,3 +69,14 @@ Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
 
 //materials manager
 Route::get('materials_manager',[App\Http\Controllers\AgentsController::class,'materialsManager']);
+Route::get('mobilizers_without_phone',[App\Http\Controllers\AgentsController::class,'materialsManagerNoPhone']);
+Route::get('materials_report',[App\Http\Controllers\AgentsController::class,'materialsReport']);
+Route::post('save_materials',[App\Http\Controllers\AgentsController::class,'saveMaterials']);
+Route::post('save_materials_no_phone',[App\Http\Controllers\AgentsController::class,'saveMaterialsManagerNoPhone']);
+Route::get('recruited_without_phone',[App\Http\Controllers\AgentsController::class,'recruitedWithoutPhone']);
+Route::get('not_recruited_with_phone',[App\Http\Controllers\AgentsController::class,'notRecruitedWithPhone']);
+Route::get('not_recruited_without_phone',[App\Http\Controllers\AgentsController::class,'notRecruitedWithoutPhone']);
+Route::get('token_one',[App\Http\Controllers\AgentsController::class,'token']);
+Route::get('token_one_report',[App\Http\Controllers\AgentsController::class,'tokenOneReport']);
+Route::post('save_token',[App\Http\Controllers\AgentsController::class,'saveToken']);
+
