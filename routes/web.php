@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CallCenterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 /*
@@ -77,6 +78,14 @@ Route::get('recruited_without_phone',[App\Http\Controllers\AgentsController::cla
 Route::get('not_recruited_with_phone',[App\Http\Controllers\AgentsController::class,'notRecruitedWithPhone']);
 Route::get('not_recruited_without_phone',[App\Http\Controllers\AgentsController::class,'notRecruitedWithoutPhone']);
 Route::get('token_one',[App\Http\Controllers\AgentsController::class,'token']);
-Route::get('token_one_report',[App\Http\Controllers\AgentsController::class,'tokenOneReport']);
+Route::get('token_one_report',[App\Http\Controllers\AgentsController::class,'tokenOneReport'])->middleware('auth');
 Route::post('save_token',[App\Http\Controllers\AgentsController::class,'saveToken']);
 
+
+/**
+ * Call Center
+ */
+
+Route::get('call_center',[CallCenterController::class,'index'])->middleware('auth');
+Route::post('save_opinion',[CallCenterController::class,'saveOpinion'])->middleware('auth');
+Route::get('call_center_report',[CallCenterController::class,'callCenterReport']);

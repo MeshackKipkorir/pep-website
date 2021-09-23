@@ -23,6 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return redirect('agent_a_mobilizer_registration');
+        return redirect('/');
     }
 }

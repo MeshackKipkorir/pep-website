@@ -461,7 +461,7 @@ class AgentsController extends Controller
      $total_with_phone = DB::select('select polling_station,count(*) as total from token_one where mobile_no is not null GROUP BY polling_station ORDER BY total desc');
      $total_without_phone = DB::select('select polling_station,count(*) as total from token_one where mobile_no IS NULL GROUP BY polling_station ORDER BY total desc');
      $inactive = DB::select('SELECT polling_station,manager,no_of_voters FROM kiagu_polling_stations WHERE NOT EXISTS (SELECT * FROM token_one WHERE token_one.polling_station = kiagu_polling_stations.polling_station)');
-     $totalwp = DB::select('SELECT count(*) as total from token_one where mobile_no is not null');
+     $totalwp = DB::select('SELECT count(*) as total from token_one');
      $totalwnp = DB::select('SELECT count(*) as total from token_one where mobile_no is null');
 
      $data = [

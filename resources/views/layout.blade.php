@@ -152,6 +152,8 @@
   <script src="assets/js/main.js"></script>
   <script src="assets/js/carousel.js"></script>
   <script src="assets/js/mobilizer.js"></script>
+  @stack('custom-scripts')
+
 
 </body>
 

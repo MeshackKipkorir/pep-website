@@ -167,4 +167,19 @@ function populateMobilizerForm(data){
 
 }
 
+//call center
+
+function callStatus(){
+    let option = document.getElementById('call_status').value;
+
+    if(option == 'missed' || option == 'invalid' || option == 'unreachable'){
+
+        document.getElementById('main_area').style.display = 'none';
+    }
+    else{
+        document.getElementById('main_area').style.display = 'block';
+
+    }
+}
+
 

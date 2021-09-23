@@ -48,13 +48,13 @@
                                         @endforeach
                                         @foreach($total_with_phone as $ts)
                                             @if($ts->polling_station == $pc -> polling_station)
-                                                @if(number_format(($ts -> total / $pc->no_of_voters) * 100,2) > 90)
+                                                @if(number_format(($ts -> total / $pc->no_of_voters) * 100,2) >= 90)
                                                 <td style="background-color: blue;color:white;">{{number_format(($ts -> total / $pc->no_of_voters) * 100,2)}} %</td>
-                                                @elseif(number_format(($ts -> total / $pc->no_of_voters) * 100,2) > 70 && number_format(($ts -> total / $pc->no_of_voters) * 100,2) < 90)
+                                                @elseif(number_format(($ts -> total / $pc->no_of_voters) * 100,2) >= 70 && number_format(($ts -> total / $pc->no_of_voters) * 100,2) < 90)
                                                 <td style="background-color: blue;color:white;">{{number_format(($ts -> total / $pc->no_of_voters) * 100,2)}} %</td>
-                                                @elseif(number_format(($ts -> total / $pc->no_of_voters) * 100,2) > 50 && number_format(($ts -> total / $pc->no_of_voters) * 100,2) < 70)
+                                                @elseif(number_format(($ts -> total / $pc->no_of_voters) * 100,2) >= 50 && number_format(($ts -> total / $pc->no_of_voters) * 100,2) < 70)
                                                     <td style="background-color: green;color:white;">{{number_format(($ts -> total / $pc->no_of_voters) * 100,2)}} %</td>
-                                                @elseif(number_format(($ts -> total / $pc->no_of_voters) * 100,2) > 40 && number_format(($ts -> total / $pc->no_of_voters) * 100,2) < 50)
+                                                @elseif(number_format(($ts -> total / $pc->no_of_voters) * 100,2) >= 40 && number_format(($ts -> total / $pc->no_of_voters) * 100,2) < 50)
                                                     <td style="background-color: orange;color:white;">{{number_format(($ts -> total / $pc->no_of_voters) * 100,2)}} %</td>
                                                 @elseif(number_format(($ts -> total / $pc->no_of_voters) * 100,2) < 40)
                                                     <td style="background-color: red;color:white;">{{number_format(($ts -> total / $pc->no_of_voters) * 100,2)}} %</td>
