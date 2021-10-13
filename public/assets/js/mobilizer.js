@@ -1,5 +1,5 @@
 //cache
-
+fetchRegisteredmembers();
 
 //hide forms
 document.getElementById('main_container').style.display = "none";
@@ -182,4 +182,75 @@ function callStatus(){
     }
 }
 
+function reason(){
 
+    let option = document.getElementById('candidate').value;
+
+    if(option == 13 || option == 12){
+        document.getElementById('no').style.display = 'block';
+        document.getElementById('yes').style.display = 'none';
+    }
+    else if(option != 3){
+        document.getElementById('consider').style.display = 'block';
+        document.getElementById('convince').style.display = 'block';
+        document.getElementById('candidate').style.display = 'block';
+
+    }
+    else if(option == 3){
+        document.getElementById('candidate_two').value = 3;
+
+    }
+    else{
+        document.getElementById('yes').style.display = 'block';
+        document.getElementById('candidate').style.display = 'block';
+        document.getElementById('no').style.display = 'none';
+        document.getElementById('consider').style.display = 'none';
+        document.getElementById('convince').style.display = 'none';
+
+    }
+}
+
+function token(){
+    let option = document.getElementById('token_line').value;
+
+    if(option == 0){
+        document.getElementById('update_line').style.display = 'block';
+    }
+}
+
+function fetchRegisteredmembers(){
+
+    $.ajax({
+        url:"https://uchaguzi.chanukafintech.com/api/fetch_registered_members",
+        type:"GET",
+        dataType:"JSON",
+        success:function(response){
+            console.log(response);
+           // loader.style.display = 'none';
+            populateRegisteredMembers(response);
+        },
+        error:function (response){
+            console.log(response);
+           // loader.style.display = 'none';
+        }
+    });
+}
+
+function populateRegisteredMembers(data){
+
+    var table = document.getElementById('ussd');
+    for(var i = 0; i < data.length; i++){
+        console.log(data[i]);
+        table.insertRow(-1).innerHTML =
+            '<tr>'+
+                '<td>' + parseInt(i+1) + '</td>'+
+                '<td>' + data[i]['full_names'] +'</td>'+
+                '<td>' + data[i]['id_no'] + '</td>'+
+                '<td>' + data[i]['phone_no'] + '</td>'+
+                '<td>' + data[i]['county'] + '</td>'+
+                '<td>' + data[i]['constituency'] + '</td>'+
+                '<td>' + data[i]['ward'] + '</td>'+
+                '<td>' + data[i]['polling_station'] + '</td>'+
+            '</tr>';
+    }
+}

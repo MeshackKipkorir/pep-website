@@ -87,5 +87,16 @@ Route::post('save_token',[App\Http\Controllers\AgentsController::class,'saveToke
  */
 
 Route::get('call_center',[CallCenterController::class,'index'])->middleware('auth');
-Route::post('save_opinion',[CallCenterController::class,'saveOpinion'])->middleware('auth');
+Route::post('save_opinion',[CallCenterController::class,'saveOpinionTwo'])->middleware('auth');
 Route::get('call_center_report',[CallCenterController::class,'callCenterReport']);
+Route::get('call_center_second_report',[CallCenterController::class,'callCenterReportTwo']);
+Route::get('poll_three',[CallCenterController::class,'callCenterReportThree']);
+Route::get('poll_four_results',[CallCenterController::class,'callCenterReportFour']);
+
+/**
+ * Voters statistics
+ */
+
+Route::get('voters_target',[MainController::class,'target'])->middleware('auth');
+
+Route::get('members_registered_via_ussd',[MainController::class,'fetchUssdmembers']);

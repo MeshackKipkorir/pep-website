@@ -27,7 +27,7 @@
 
                                 <div class="col-md-5 form-group">
                                     <label class="form-group">Calling Agent</label>
-                                    <input type="text" class="form-control" value="{{$agent}}" name="agent" readonly>
+                                    <input type="text" class="form-control" value="{{$agent}}" name="calling_agent" readonly>
                                     <div class="validate"></div>
                                 </div>
                             </div>
@@ -86,20 +86,9 @@
                                 <div class="row">
 
                                     <div class="col-md-4 form-group">
-                                        <label class="form-group">Will you vote?</label>
-                                        <select class="form-control" name="voting_status" id="voting_status"
-                                                data-rule="required" data-msg="Please Enter Gender">
-                                            <option disabled selected>Select</option>
-                                            <option value="1">Yes</option>
-                                            <option value="0">No</option>
-                                        </select>
-                                        <div class="validate"></div>
-                                    </div>
-
-                                    <div class="col-md-4 form-group">
                                         <label class="form-group">Whom will you vote for?</label>
                                         <select class="form-control" name="candidate"
-                                                data-rule="required" data-msg="required">
+                                                data-rule="required" data-msg="required" id="candidate" onchange="reason()">
                                             <option disabled selected>Select</option>
                                             @foreach($candidates as $candidate)
                                                 <option value="{{$candidate->id}}">{{$candidate->name}}</option>
@@ -109,169 +98,237 @@
                                     </div>
 
                                     <div class="col-md-4 form-group">
-                                        <label class="form-group">Why ?</label>
-                                        <select class="form-control" name="voting_reason"
-                                                data-rule="required" data-msg="Please select reason">
+                                        <label class="form-group">Whom will you vote for?(after convincing)</label>
+                                        <select class="form-control" name="candidate_second_time"
+                                                data-rule="required" data-msg="required" id="candidate_two">
                                             <option disabled selected>Select</option>
-                                            <option value="DEVELOPMENT TRACK">DEVELOPMENT TRACK</option>
-                                            <option value="Liking">Liking</option>
-                                            <option value="DISLIKES OPPONENT">DISLIKES OPPONENT</option>
-                                            <option value="RELATION">RELATION</option>
-                                            <option value="CAMPAIGN">CAMPIAGN</option>
-                                            <option value="AFFILIATION TO M.K/C.C.K">AFFILIATION TO M.K/C.C.K</option>
-                                            <option value="AFFILIATION TO RUTO/UDA">AFFILIATION TO RUTO/UDA</option>
+                                            @foreach($candidates as $candidate)
+                                                <option value="{{$candidate->id}}">{{$candidate->name}}</option>
+                                            @endforeach
                                         </select>
                                         <div class="validate"></div>
-                                        <div class="validate"></div>
                                     </div>
+
+{{--                                    <div class="col-md-4 form-group" id="yes">--}}
+{{--                                        <label class="form-group">Why will you vote for him?</label>--}}
+{{--                                        <input type="text" class="form-control" name="voting_reason"--}}
+{{--                                               placeholder=""--}}
+{{--                                               />--}}
+{{--                                        <div class="validate"></div>--}}
+{{--                                    </div>--}}
+
+{{--                                    <div class="col-md-4 form-group" id="no" style="display: none;">--}}
+{{--                                        <label class="form-group">Why ?</label>--}}
+{{--                                        <input type="text" class="form-control" name="voting_reason"--}}
+{{--                                               placeholder=""--}}
+{{--                                               data-msg="Please enter a middle name"/>--}}
+{{--                                        <div class="validate"></div>--}}
+{{--                                    </div>--}}
+
+{{--                                    <div class="col-md-4 form-group" style="display:none;" id="consider">--}}
+{{--                                        <label class="form-group">Would you consider voting for kabobo?</label>--}}
+{{--                                        <select class="form-control" name="voting_status"--}}
+{{--                                                data-rule="required" data-msg="Please Enter Gender">--}}
+{{--                                            <option disabled selected>Select</option>--}}
+{{--                                            <option value="1">Yes</option>--}}
+{{--                                            <option value="0">No</option>--}}
+{{--                                            <option value="2">Undecided</option>--}}
+
+{{--                                        </select>--}}
+{{--                                        <div class="validate"></div>--}}
+{{--                                    </div>--}}
+
+{{--                                    <div class="col-md-4 form-group" id="convince" style="display: none;">--}}
+{{--                                        <label class="form-group">What would make you vote for kabobo?</label>--}}
+{{--                                        <input type="text" name="make_you_vote" class="form-control"/>--}}
+{{--                                        <div class="validate"></div>--}}
+{{--                                    </div>--}}
+
+{{--                                    <div class="col-md-4 form-group">--}}
+{{--                                        <label class="form-group">Did you receive cash token one?</label>--}}
+{{--                                        <select class="form-control" name="received_token"--}}
+{{--                                                data-rule="required" data-msg="Please Enter Gender">--}}
+{{--                                            <option disabled selected>Select</option>--}}
+{{--                                            <option value="1">Yes</option>--}}
+{{--                                            <option value="0">No</option>--}}
+{{--                                        </select>--}}
+{{--                                        <div class="validate"></div>--}}
+{{--                                    </div>--}}
+
+{{--                                    <div class="col-md-4 form-group">--}}
+{{--                                        <label class="form-group">can we use this line to process Cash Token 2 by Mpesa?</label>--}}
+{{--                                        <select class="form-control" name="current_token_no" id="token_line"--}}
+{{--                                                data-rule="required" data-msg="Please Enter Gender" onchange="token()">--}}
+{{--                                            <option disabled selected>Select</option>--}}
+{{--                                            <option value="1">Yes</option>--}}
+{{--                                            <option value="0">No</option>--}}
+{{--                                        </select>--}}
+{{--                                        <div class="validate"></div>--}}
+{{--                                    </div>--}}
+
+{{--                                    <div class="col-md-4 form-group" style="display: none;" id="update_line">--}}
+{{--                                        <label class="form-group">which line can we use ?</label>--}}
+{{--                                        <input type="number" name="updated_token_no" class="form-control"/>--}}
+{{--                                        <div class="validate"></div>--}}
+{{--                                    </div>--}}
+
+{{--                                    <div class="col-md-4 form-group">--}}
+{{--                                        <label class="form-group">Can you mobilize for kabobo ?</label>--}}
+{{--                                        <select class="form-control" name="mobilize_for_kabobo" id="token_line"--}}
+{{--                                                data-rule="required" data-msg="Please Enter Gender">--}}
+{{--                                            <option disabled selected>Select</option>--}}
+{{--                                            <option value="1">Yes</option>--}}
+{{--                                            <option value="0">No</option>--}}
+{{--                                        </select>--}}
+{{--                                        <div class="validate"></div>--}}
+{{--                                    </div>--}}
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <h4 class="text-center">Question B</h4>
-                                    </div>
-                                </div>
+{{--                                <div class="row">--}}
+{{--                                    <div class="col-md-12">--}}
+{{--                                        <h4 class="text-center">Question B</h4>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
-                                <div class="row">
+{{--                                <div class="row">--}}
 
-                                    <div class="col-md-4 form-group">
-                                        <label class="form-group">Have you received a token from Kabobos?</label>
-                                        <select class="form-control" name="received_token" id="token_status"
-                                                data-rule="required" data-msg="Please Enter Gender">
-                                            <option disabled selected>Select</option>
-                                            <option value="1">Yes</option>
-                                            <option value="0">No</option>
-                                        </select>
-                                        <div class="validate"></div>
-                                    </div>
+{{--                                    <div class="col-md-4 form-group">--}}
+{{--                                        <label class="form-group">Have you received a token from Kabobos?</label>--}}
+{{--                                        <select class="form-control" name="received_token" id="token_status"--}}
+{{--                                                data-rule="required" data-msg="Please Enter Gender">--}}
+{{--                                            <option disabled selected>Select</option>--}}
+{{--                                            <option value="1">Yes</option>--}}
+{{--                                            <option value="0">No</option>--}}
+{{--                                        </select>--}}
+{{--                                        <div class="validate"></div>--}}
+{{--                                    </div>--}}
 
-                                    <div class="col-md-4 form-group">
-                                        <label class="form-group">Through whom ?</label>
-                                        <input type="text" class="form-control" name="received_token_from">
-                                        <div class="validate"></div>
-                                    </div>
+{{--                                    <div class="col-md-4 form-group">--}}
+{{--                                        <label class="form-group">Through whom ?</label>--}}
+{{--                                        <input type="text" class="form-control" name="received_token_from">--}}
+{{--                                        <div class="validate"></div>--}}
+{{--                                    </div>--}}
 
-                                    <div class="col-md-4 form-group">
-                                        <label class="form-group">How much ?</label>
-                                        <input type="number" class="form-control" name="received_token_amount">
-                                        <div class="validate"></div>
-                                    </div>
-                                </div>
+{{--                                    <div class="col-md-4 form-group">--}}
+{{--                                        <label class="form-group">How much ?</label>--}}
+{{--                                        <input type="number" class="form-control" name="received_token_amount">--}}
+{{--                                        <div class="validate"></div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
-                                <div class="row">
+{{--                                <div class="row">--}}
 
-                                    <div class="col-md-4 form-group">
-                                        <label class="form-group">Do you know his party ?</label>
-                                        <select class="form-control" name="party" id="token_status"
-                                                data-rule="required" data-msg="Please Enter Gender">
-                                            <option disabled selected>Select</option>
-                                            <option value="1">Yes</option>
-                                            <option value="0">No</option>
-                                        </select>
-                                        <div class="validate"></div>
-                                    </div>
+{{--                                    <div class="col-md-4 form-group">--}}
+{{--                                        <label class="form-group">Do you know his party ?</label>--}}
+{{--                                        <select class="form-control" name="party" id="token_status"--}}
+{{--                                                data-rule="required" data-msg="Please Enter Gender">--}}
+{{--                                            <option disabled selected>Select</option>--}}
+{{--                                            <option value="1">Yes</option>--}}
+{{--                                            <option value="0">No</option>--}}
+{{--                                        </select>--}}
+{{--                                        <div class="validate"></div>--}}
+{{--                                    </div>--}}
 
-                                    <div class="col-md-4 form-group">
-                                        <label class="form-group">Do you know his party slogan ?</label>
-                                        <select class="form-control" name="party_slogan" id="token_status"
-                                                data-rule="required" data-msg="Please Enter Gender">
-                                            <option disabled selected>Select</option>
-                                            <option value="1">Yes</option>
-                                            <option value="0">No</option>
-                                        </select>
-                                        <div class="validate"></div>
-                                    </div>
+{{--                                    <div class="col-md-4 form-group">--}}
+{{--                                        <label class="form-group">Do you know his party slogan ?</label>--}}
+{{--                                        <select class="form-control" name="party_slogan" id="token_status"--}}
+{{--                                                data-rule="required" data-msg="Please Enter Gender">--}}
+{{--                                            <option disabled selected>Select</option>--}}
+{{--                                            <option value="1">Yes</option>--}}
+{{--                                            <option value="0">No</option>--}}
+{{--                                        </select>--}}
+{{--                                        <div class="validate"></div>--}}
+{{--                                    </div>--}}
 
-                                    <div class="col-md-4 form-group">
-                                        <label class="form-group">Do you know his party symbol?</label>
-                                        <select class="form-control" name="party_symbol" id="token_status"
-                                                data-rule="required" data-msg="Please Enter Gender">
-                                            <option disabled selected>Select</option>
-                                            <option value="1">Yes</option>
-                                            <option value="0">No</option>
-                                        </select>
-                                        <div class="validate"></div>
-                                    </div>
+{{--                                    <div class="col-md-4 form-group">--}}
+{{--                                        <label class="form-group">Do you know his party symbol?</label>--}}
+{{--                                        <select class="form-control" name="party_symbol" id="token_status"--}}
+{{--                                                data-rule="required" data-msg="Please Enter Gender">--}}
+{{--                                            <option disabled selected>Select</option>--}}
+{{--                                            <option value="1">Yes</option>--}}
+{{--                                            <option value="0">No</option>--}}
+{{--                                        </select>--}}
+{{--                                        <div class="validate"></div>--}}
+{{--                                    </div>--}}
 
-                                    <div class="col-md-4 form-group">
-                                        <label class="form-group">Do you know his official name?</label>
-                                        <select class="form-control" name="official_name" id="token_status"
-                                                data-rule="required" data-msg="Please Enter Gender">
-                                            <option disabled selected>Select</option>
-                                            <option value="1">Yes</option>
-                                            <option value="0">No</option>
-                                        </select>
-                                        <div class="validate"></div>
-                                    </div>
+{{--                                    <div class="col-md-4 form-group">--}}
+{{--                                        <label class="form-group">Do you know his official name?</label>--}}
+{{--                                        <select class="form-control" name="official_name" id="token_status"--}}
+{{--                                                data-rule="required" data-msg="Please Enter Gender">--}}
+{{--                                            <option disabled selected>Select</option>--}}
+{{--                                            <option value="1">Yes</option>--}}
+{{--                                            <option value="0">No</option>--}}
+{{--                                        </select>--}}
+{{--                                        <div class="validate"></div>--}}
+{{--                                    </div>--}}
 
-                                    <div class="col-md-4 form-group">
-                                        <label class="form-group">Can you be our agent?</label>
-                                        <select class="form-control" name="be_our_agent"
-                                                data-rule="required" data-msg="Please Enter Gender">
-                                            <option disabled selected>Select</option>
-                                            <option value="1">Yes</option>
-                                            <option value="0">No</option>
-                                        </select>
-                                        <div class="validate"></div>
-                                    </div>
+{{--                                    <div class="col-md-4 form-group">--}}
+{{--                                        <label class="form-group">Can you be our agent?</label>--}}
+{{--                                        <select class="form-control" name="be_our_agent"--}}
+{{--                                                data-rule="required" data-msg="Please Enter Gender">--}}
+{{--                                            <option disabled selected>Select</option>--}}
+{{--                                            <option value="1">Yes</option>--}}
+{{--                                            <option value="0">No</option>--}}
+{{--                                        </select>--}}
+{{--                                        <div class="validate"></div>--}}
+{{--                                    </div>--}}
 
-                                    <div class="col-md-4 form-group">
-                                        <label class="form-group">Can I send advanced payment by Mpesa ?</label>
-                                        <select class="form-control" name="advanced_payment"
-                                                data-rule="required" data-msg="Please Enter Gender">
-                                            <option disabled selected>Select</option>
-                                            <option value="1">Yes</option>
-                                            <option value="0">No</option>
-                                        </select>
-                                        <div class="validate"></div>
-                                    </div>
+{{--                                    <div class="col-md-4 form-group">--}}
+{{--                                        <label class="form-group">Can I send advanced payment by Mpesa ?</label>--}}
+{{--                                        <select class="form-control" name="advanced_payment"--}}
+{{--                                                data-rule="required" data-msg="Please Enter Gender">--}}
+{{--                                            <option disabled selected>Select</option>--}}
+{{--                                            <option value="1">Yes</option>--}}
+{{--                                            <option value="0">No</option>--}}
+{{--                                        </select>--}}
+{{--                                        <div class="validate"></div>--}}
+{{--                                    </div>--}}
 
-                                </div>
+{{--                                </div>--}}
 
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <h4 class="text-center">Question C</h4>
-                                    </div>
-                                </div>
+{{--                                <div class="row">--}}
+{{--                                    <div class="col-md-12">--}}
+{{--                                        <h4 class="text-center">Question C</h4>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
-                                <div class="row">
+{{--                                <div class="row">--}}
 
-                                    <div class="col-md-4 form-group">
-                                        <label class="form-group">Have you received advanced payment ?</label>
-                                        <select class="form-control" name="confirm_receive_token" id="voting_status"
-                                                data-rule="required" data-msg="Please Enter Gender">
-                                            <option disabled selected>Select</option>
-                                            <option value="1">Yes</option>
-                                            <option value="0">No</option>
-                                        </select>
-                                        <div class="validate"></div>
-                                    </div>
+{{--                                    <div class="col-md-4 form-group">--}}
+{{--                                        <label class="form-group">Have you received advanced payment ?</label>--}}
+{{--                                        <select class="form-control" name="confirm_receive_token" id="voting_status"--}}
+{{--                                                data-rule="required" data-msg="Please Enter Gender">--}}
+{{--                                            <option disabled selected>Select</option>--}}
+{{--                                            <option value="1">Yes</option>--}}
+{{--                                            <option value="0">No</option>--}}
+{{--                                        </select>--}}
+{{--                                        <div class="validate"></div>--}}
+{{--                                    </div>--}}
 
-                                    <div class="col-md-4 form-group">
-                                        <label class="form-group">Will you vote for Kabobo?</label>
-                                        <select class="form-control" name="vote_for_kabobo" id="voting_status"
-                                                data-rule="required" data-msg="Please Enter Gender">
-                                            <option disabled selected>Select</option>
-                                            <option value="1">Yes</option>
-                                            <option value="0">No</option>
-                                        </select>
-                                        <div class="validate"></div>
-                                    </div>
+{{--                                    <div class="col-md-4 form-group">--}}
+{{--                                        <label class="form-group">Will you vote for Kabobo?</label>--}}
+{{--                                        <select class="form-control" name="vote_for_kabobo" id="voting_status"--}}
+{{--                                                data-rule="required" data-msg="Please Enter Gender">--}}
+{{--                                            <option disabled selected>Select</option>--}}
+{{--                                            <option value="1">Yes</option>--}}
+{{--                                            <option value="0">No</option>--}}
+{{--                                        </select>--}}
+{{--                                        <div class="validate"></div>--}}
+{{--                                    </div>--}}
 
-                                    <div class="col-md-4 form-group">
-                                        <label class="form-group">Will you mobilize others to vote for Kabobo ?</label>
-                                        <select class="form-control" name="will_mobilize"
-                                                data-rule="required" data-msg="Please select reason">
-                                            <option disabled selected>Select</option>
-                                            <option value="1">Yes</option>
-                                            <option value="0">No</option>
-                                        </select>
-                                        <div class="validate"></div>
-                                        <div class="validate"></div>
-                                    </div>
-                                </div>
-
-                                </div>
+{{--                                    <div class="col-md-4 form-group">--}}
+{{--                                        <label class="form-group">Will you mobilize others to vote for Kabobo ?</label>--}}
+{{--                                        <select class="form-control" name="will_mobilize"--}}
+{{--                                                data-rule="required" data-msg="Please select reason">--}}
+{{--                                            <option disabled selected>Select</option>--}}
+{{--                                            <option value="1">Yes</option>--}}
+{{--                                            <option value="0">No</option>--}}
+{{--                                        </select>--}}
+{{--                                        <div class="validate"></div>--}}
+{{--                                        <div class="validate"></div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+                                        </div>
 
                                 <div class="mb-3">
                                     <div class="loading">Loading</div>

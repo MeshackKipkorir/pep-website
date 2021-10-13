@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Diaspora;
 use App\Models\Feedback;
+use App\Models\Target;
 use Illuminate\Http\Request;
 use App\Models\Aspirant;
 use App\Models\Members;
 use App\Models\PartyMembers;
 use Illuminate\Support\Facades\DB;
+use GuzzleHttp\Client;
+use PhpParser\Node\Stmt\Echo_;
+
 
 class MainController extends Controller
 {
@@ -133,5 +137,44 @@ class MainController extends Controller
         ];
 
         return view('view_diasporas', $data);
+    }
+
+    public function target(){
+        ini_set('memory_limit', '-1');
+
+
+        $statistics = Target::all();
+        $counties = DB::select('SELECT DISTINCT county_name from voters_statistics');
+        $constituencies = DB::select('SELECT DISTINCT constituency_name FROM `voters_statistics`');
+        $totals = DB::select('SELECT sum(population_2019) as population_2019,sum(current_registered_voters) as current_registered_voters,sum(projected_registered_voters) as projected_registered_voters,sum(target_2022) as target_2022,sum(target_2021) as target_2021,sum(enrollment_per_kit) as enrollment_per_kit,sum(enrollment_per_day) as enrollment_per_day,constituency_name FROM `voters_statistics` GROUP BY constituency_name
+');
+
+        $data = [
+            'statistics' => $statistics,
+            'counties' => $counties,
+            'constituencies' => $constituencies,
+            'totals' => $totals
+        ];
+
+        return view('data.target',$data);
+    }
+
+    public function fetchUssdmembers(){
+
+        $client = new Client();
+        $res = $client->get('https://uchaguzi.chanukafintech.com/api/fetch_registered_members',array());
+
+        $data  = $res->getBody();
+
+        $decoded = json_decode($data, true);
+
+//        foreach($decoded as $d){
+//            foreach($d as $k){
+//                echo $k;
+//            }
+//        }
+//
+//        die;
+       return view('ussd_members')->with('members',$decoded);
     }
 }

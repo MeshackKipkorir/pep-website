@@ -42,10 +42,19 @@
                                         <td>{{number_format(($result->total / $total[0]->total)*100,2)}} %</td>
                                     </tr>
                                 @endforeach
+                                @foreach($non_voted_candidates as $index => $nv)
+                                    <tr>
+                                        <td>{{13 - count($non_voted_candidates) + ($index + 1) }}</td>
+                                        <td>{{$nv->name}}</td>
+                                        <td>0</td>
+                                        <td>0 %</td>
+                                    </tr>
+                                @endforeach
                                 <tr>
                                     <td></td>
                                     <td>Total</td>
                                     <td>{{$total[0]->total}}</td>
+                                    <td>100%</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -87,19 +96,24 @@
                                     <td>{{$total_calls}}</td>
                                 </tr>
                                 <tr>
-                                    <td>7</td>
-                                    <td>Invalid<br>(Agents picked but didn't select candidate or call dropped)</td>
+                                    <td>6</td>
+                                    <td>Invalid</td>
                                     <td>{{$invalid[0]->total}}</td>
                                 </tr>
                                 <tr>
-                                    <td>8</td>
-                                    <td>Not voting</td>
-                                    <td>{{$not_voting}}</td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
+                                    <td>7</td>
                                     <td>Average Calls Per Agent</td>
                                     <td>{{number_format($agent_average,2)}}</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>Total Tokens Received</td>
+                                    <td>{{$total_token_received[0]->total}}</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>Total Tokens Not Received</td>
+                                    <td>{{$total_token_not_received[0]->total}}</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -135,6 +149,46 @@
                             </table>
                         </div>
                     </div>
+                </div>
+
+                <div class="container">
+                    @foreach($polling_stations as $polling_station)
+                        <div class="section-title" data-aos="zoom-out" style="text-align:center !important;">
+                            <p style="font-size: 20px;text-align: left;">{{$polling_station->polling_station}}</p>
+                        </div>
+
+                        <div class="row">
+                        <div class="col-md-6">
+                            <table class="table table-responsive">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Candidate</th>
+                                    <th>Votes</th>
+                                    <th>Percentage</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @php($counter=1)
+                                @foreach($polling_station_results as $index => $result)
+                                    @if($result->polling_center == $polling_station->polling_station)
+                                    <tr>
+                                        <td>{{$counter++}}</td>
+                                        <td>{{$result->candidate}}</td>
+                                        <td>{{$result->votes}}</td>
+                                        @foreach($polling_station_total as $total)
+                                            @if($total->polling_center == $polling_station->polling_station)
+                                               <td>{{number_format(($result->votes/$total->total) * 100,2)}} %</td>
+                                            @endif
+                                        @endforeach
+                                    </tr>
+                                    @endif
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
             </div>
         </section><!-- End Contact Section -->
