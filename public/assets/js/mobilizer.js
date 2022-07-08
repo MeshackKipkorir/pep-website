@@ -1,6 +1,6 @@
 //cache
 fetchRegisteredmembers();
-
+fetchRegisteredAspirants();
 //hide forms
 document.getElementById('main_container').style.display = "none";
 
@@ -172,7 +172,7 @@ function populateMobilizerForm(data){
 function callStatus(){
     let option = document.getElementById('call_status').value;
 
-    if(option == 'missed' || option == 'invalid' || option == 'unreachable'){
+    if(option == 'missed' || option == 'invalid' || option == 'unreachable' || option == 'transferred' || option == 'special'){
 
         document.getElementById('main_area').style.display = 'none';
     }
@@ -251,6 +251,60 @@ function populateRegisteredMembers(data){
                 '<td>' + data[i]['constituency'] + '</td>'+
                 '<td>' + data[i]['ward'] + '</td>'+
                 '<td>' + data[i]['polling_station'] + '</td>'+
+            '</tr>';
+    }
+}
+
+function fetchRegisteredAspirants(){
+
+    $.ajax({
+        url:"https://uchaguzi.chanukafintech.com/api/fetch_registered_aspirants",
+        type:"GET",
+        dataType:"JSON",
+        success:function(response){
+            console.log(response);
+            // loader.style.display = 'none';
+            populateRegisteredAspirants(response);
+        },
+        error:function (response){
+            console.log(response);
+            // loader.style.display = 'none';
+        }
+    });
+}
+
+function populateRegisteredAspirants(data){
+
+    var table = document.getElementById('aspirants');
+    var seat;
+
+    for(var i = 0; i < data.length; i++){
+        console.log(data[i]['interested_seat']);
+
+        switch(data[i]['interested_seat']){
+            case '1':seat = 'President';
+                    break;
+            case '2':seat = 'Governor';
+                    break;
+            case '3':seat = 'Senator';
+                    break;
+            case '4':seat = 'Women Rep';
+                    break;
+            case '5':seat = 'M.P';
+                   break;
+            case '6':seat = 'M.C.A';
+                   break;
+            default:seat = 'Undecided';
+
+        }
+
+        table.insertRow(-1).innerHTML =
+            '<tr>'+
+            '<td>' + parseInt(i+1) + '</td>'+
+            '<td>' + data[i]['full_names'] +'</td>'+
+            '<td>' + data[i]['id_no'] + '</td>'+
+            '<td>' + '0'+data[i]['phone_number'] + '</td>'+
+            '<td>' + seat + '</td>'+
             '</tr>';
     }
 }

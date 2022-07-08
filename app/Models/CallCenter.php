@@ -9,9 +9,9 @@ class CallCenter extends Model
 {
     use HasFactory;
 
-    protected $table = 'poll_four_db';
+    protected $table = 'july_poll_database';
 
     protected $fillable = [
-        'called','booked','booked_by'
+       'first_name','other_name','last_name','id_no','phone_number','gender','DOB','polling_center','ward','secondary_ward','constituency','county','called','booked','booked_by'
     ];
 }

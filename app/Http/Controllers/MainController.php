@@ -168,13 +168,20 @@ class MainController extends Controller
 
         $decoded = json_decode($data, true);
 
-//        foreach($decoded as $d){
-//            foreach($d as $k){
-//                echo $k;
-//            }
-//        }
-//
-//        die;
+
        return view('ussd_members')->with('members',$decoded);
+    }
+
+    public function fetchUssdAspirants(){
+
+        $client = new Client();
+        $res = $client->get('https://uchaguzi.chanukafintech.com/api/fetch_registered_aspirants',array());
+
+        $data  = $res->getBody();
+
+        $decoded = json_decode($data, true);
+
+        //dd($decoded);
+        return view('ussd_aspirants')->with('members',$decoded);
     }
 }

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Chama Cha Kazi</title>
+  <title>DAILY CALL CENTER</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
     <meta http-equiv='cache-control' content='no-cache'>
@@ -40,22 +40,22 @@
   ======================================================== -->
 </head>
 
-<body>
+<body oncontextmenu="return false;">
 
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center  header-transparent ">
+  <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center">
 
       <div class="logo mr-auto">
-        <h1 style="font-size:20px;" class="text-light"><a href="{{url('/')}}"><span style="color:#ed1f24;">CHAMA</span><span style="color:#3851a3;"> CHA</span> <span style="color:#fff;">KAZI</span></a></h1>
+        <h1 style="font-size:20px;" class="text-light">DAILY CALL CENTER</h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="{{asset('assets/img/logo.jpg')}}" alt="" class="img-fluid"></a> -->
       </div>
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="{{url('/')}}">Home</a></li>
-          <li><a href="{{url('diaspora')}}">Diaspora Registration</a></li>
+          <!-- <li class="active"><a href="{{url('/')}}">Home</a></li>
+          <li><a href="{{url('diaspora')}}">Diaspora Registration</a></li> -->
           <!-- <li><a href="#services">Services</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#pricing">Pricing</a></li>
@@ -77,9 +77,9 @@
               <li><a href="#">Drop Down 5</a></li>
             </ul>
           </li> -->
-          <li><a href="{{url('aspirant_registrations')}}">Aspirant Training Registration</a></li>
+          <!-- <li><a href="{{url('aspirant_registrations')}}">Aspirant Training Registration</a></li>
           <li><a href="{{url('member_registration')}}">Member Registration</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact">Contact</a></li> -->
           @if (Route::has('register'))
             <li class="nav-item">
             <a class="dropdown-item" href="{{ route('logout') }}"
@@ -93,7 +93,6 @@
               </form>
             </li>
             @endif
-
 
         </ul>
       </nav><!-- .nav-menu -->
@@ -114,7 +113,7 @@
 
 <!-- ======= Footer ======= -->
 <footer id="footer">
-    <div class="container">
+    <!-- <div class="container">
       <h3><span style="color:#ed1f24;">CHAMA</span><span style="color:#3851a3;">CHA</span> <span style="color:#fff;">KAZI</span></h3>
       <p>Kazi Na Pesa.</p>
       <div class="social-links">
@@ -122,9 +121,9 @@
         <a href="https://www.facebook.com/pages/category/Political-Party/Peoples-Empowerment-Party-100912945157423/" class="facebook"><i class="bx bxl-facebook"></i></a>
         <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
         <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div>
+      </div> -->
       <div class="copyright">
-        &copy; Copyright <strong><span>Kazi</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>U.D.A</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
@@ -133,7 +132,6 @@
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/selecao-bootstrap-template/ -->
         <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
       </div>
-    </div>
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
@@ -142,7 +140,7 @@
   <script src="assets/vendor/jquery/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+{{--  <script src="assets/vendor/php-email-form/validate.js"></script>--}}
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/venobox/venobox.min.js"></script>
   <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
@@ -151,7 +149,7 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script src="assets/js/carousel.js"></script>
-  <script src="assets/js/mobilizer.js"></script>
+{{--  <script src="assets/js/mobilizer.js"></script>--}}
   @stack('custom-scripts')
 
 

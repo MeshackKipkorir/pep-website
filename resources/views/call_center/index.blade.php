@@ -8,13 +8,13 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="text-center">
-                            <img src="/assets/img/cck-logo.png" width="200px">
+                            <img src="/assets/img/logo.jpeg" width="200px">
                         </div>
                     </div>
                 </div>
                 <div class="section-title" data-aos="zoom-out" style="text-align:center !important;">
-                    <h2>Call Center</h2>
-                    <p>CHAMA CHA KAZI</p>
+                    <!-- <h2>Call Center</h2> -->
+                    <p>DAILY CALL CENTER</p>
                 </div>
 
                 <div class="row mt-5">
@@ -43,12 +43,12 @@
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label class="form-group"> Names</label>
-                                        <input type="text" class="form-control" name="names" value="{{$user->first_name}} {{$user->middle_name}}" readonly>
+                                        <input type="text" class="form-control" name="names" value="{{$user->name}}" readonly>
                                         <div class="validate"></div>
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label class="form-group">Polling Center</label>
-                                        <input type="text" class="form-control" name="polling_center" value="{{$user->polling_center}}"
+                                        <input type="text" class="form-control" name="polling_center" value="{{$user->polling_station}}"
                                                placeholder="Middle Name"
                                                data-msg="Please enter a middle name" readonly/>
                                         <div class="validate"></div>
@@ -63,6 +63,25 @@
                                     </div>
 
                                     <div class="col-md-3 form-group">
+                                        <label class="form-group">Ward</label>
+                                        <input type="text" class="form-control" name="ward" value="{{$user->ward}}"
+                                               placeholder="Ward"
+                                               data-msg="Please enter a middle name" readonly/>
+                                        <div class="validate"></div>
+                                    </div>
+
+                                    <div class="col-md-3 form-group">
+                                        <label class="form-group">Constituency</label>
+                                        <input type="text" class="form-control" name="constituency" value="{{$user->constituency}}"
+                                               placeholder="Ward"
+                                               data-msg="Please enter a middle name" readonly/>
+                                        <div class="validate"></div>
+                                    </div>
+
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 form-group">
                                         <label class="form-group">Call Status</label>
                                         <select class="form-control" name="call_status"
                                                 data-rule="required" data-msg="This is required" id="call_status" onchange="callStatus()">
@@ -71,22 +90,23 @@
                                             <option value="unreachable">unreachable</option>
                                             <option value="missed">missed</option>
                                             <option value="invalid">invalid</option>
+                                            <option value="special">special</option>
+                                            <option value="transferred">Transferred</option>
                                         </select>
                                         <div class="validate"></div>
                                     </div>
                                 </div>
-
                                 <div id="main_area">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h4 class="text-center">Question A</h4>
+                                        <!-- <h4 class="text-center">Question A</h4> -->
                                     </div>
                                 </div>
 
                                 <div class="row">
 
                                     <div class="col-md-4 form-group">
-                                        <label class="form-group">Whom will you vote for?</label>
+                                        <label class="form-group">Who will you vote for Murang'a Governor?</label>
                                         <select class="form-control" name="candidate"
                                                 data-rule="required" data-msg="required" id="candidate" onchange="reason()">
                                             <option disabled selected>Select</option>
@@ -109,10 +129,22 @@
                                         <div class="validate"></div>
                                     </div>
 
+                                    <div class="col-md-4 form-group">
+                                        <label class="form-group">Comment</label>
+                                        <select class="form-control" name="comments"
+                                                data-rule="required" data-msg="required">
+                                            <option disabled selected>Select</option>
+                                            @foreach($reasons as $reason)
+                                                <option value="{{$reason->id}}">{{$reason->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        <div class="validate"></div>
+                                    </div>
+
 {{--                                    <div class="col-md-4 form-group" id="yes">--}}
-{{--                                        <label class="form-group">Why will you vote for him?</label>--}}
-{{--                                        <input type="text" class="form-control" name="voting_reason"--}}
-{{--                                               placeholder=""--}}
+{{--                                        <label class="form-group">Comment</label>--}}
+{{--                                        <input type="text" class="form-control" name="comments"--}}
+{{--                                               placeholder="comments"--}}
 {{--                                               />--}}
 {{--                                        <div class="validate"></div>--}}
 {{--                                    </div>--}}
@@ -349,6 +381,6 @@
         </section><!-- End Contact Section -->
     </main>
     @push('custom-scripts')
-        <script type="text/javascript" src="assets/js/call-center.js"></script>
+        <script type="text/javascript" src="assets/js/mobilizer.js"></script>
     @endpush
 @endsection
