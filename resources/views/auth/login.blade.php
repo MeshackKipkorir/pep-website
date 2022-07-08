@@ -5,7 +5,7 @@
 
     <div class="row">
         <div class="col-md-12 text-center">
-            <img src="{{asset('assets/img/cck-logo.png')}}" width="150px">
+            <img src="{{asset('assets/img/logo.jpeg')}}" width="150px">
         </div>
     </div>
     <div class="row justify-content-center">
